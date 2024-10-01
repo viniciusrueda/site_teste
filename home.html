@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Loja Online</title>
+</head>
+<body>
+    <h1>Loja Online</h1>
+    <div id="produtos">
+        <h2>Produtos</h2>
+        <div class="produto" data-id="1" data-nome="Camiseta" data-preco="49.90">
+            <h3>Camiseta</h3>
+            <p>Preço: R$49.90</p>
+            <button onclick="adicionarAoCarrinho('Camiseta', 49.90)">Adicionar ao Carrinho</button>
+        </div>
+        <div class="produto" data-id="2" data-nome="Calça" data-preco="89.90">
+            <h3>Calça</h3>
+            <p>Preço: R$89.90</p>
+            <button onclick="adicionarAoCarrinho('Calça', 89.90)">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+
+    <script>
+        // Configuração do Data Layer
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+
+        // Função para adicionar produtos ao carrinho
+        function adicionarAoCarrinho(produto, preco) {
+            gtag('event', 'add_to_cart', {
+                'currency': 'BRL',
+                'value': preco,
+                'items': [
+                    {
+                        'item_name': produto,
+                        'price': preco
+                    }
+                ]
+            });
+            alert(produto + ' adicionado ao carrinho!');
+        }
+    </script>
+</body>
+</html>
